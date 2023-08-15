@@ -5,6 +5,8 @@ from modules.settings import *
 
 
 def run():
+    os.system(command='cls')
+    print(MSG_GAME_START)
     players = commands.input_player_name()
     board_size = commands.input_board_size()
     board = boards.create(board_size)
@@ -24,6 +26,7 @@ def run():
             boards.put(board, player_id, place)
             boards.show(board)
 
+    os.system(command='cls')
     boards.show(board)
     print(f"\nPlayer '{players[player_id]}' is Win!!")
 
