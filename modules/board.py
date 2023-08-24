@@ -33,6 +33,8 @@ class Board:
 
     def is_omok(self) -> bool:
         row, col = self.place
+        if self.board[row][col] == settings.MARK_GRID:
+            return False
         d1 = [1, 0, 1, 1]
         d2 = [0, 1, 1, -1]
         for i in range(4):

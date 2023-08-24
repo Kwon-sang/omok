@@ -10,7 +10,7 @@ QUIT_KEY = 'Q'
 CMD_NAME_PLAYER1 = 'Please Enter the player1 name : '
 CMD_NAME_PLAYER2 = 'Please Enter the player2 name : '
 CMD_BOARD_SIZE = 'Please Enter the Board Size : '
-CMD_PLACE = 'Please enter the place to put a stone. \nIf you want quit the game, enter the \'Q\' : '
+CMD_PLACE = 'Please Enter the place to put a stone. If enter \'Q\', quit game : '
 
 
 # Inform Messages
