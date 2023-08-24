@@ -1,13 +1,16 @@
+board_size = 15
+
 MARK_PLAYER1 = '●'
 MARK_PLAYER2 = '○'
 MARK_GRID = '·'
-EXIT_KEY = 'Q'
+QUIT_KEY = 'Q'
+
 
 # Command Input Messages
 CMD_NAME_PLAYER1 = 'Please Enter the player1 name : '
 CMD_NAME_PLAYER2 = 'Please Enter the player2 name : '
 CMD_BOARD_SIZE = 'Please Enter the Board Size : '
-CMD_PLACE = 'Please enter the place to put a stone : '
+CMD_PLACE = 'Please enter the place to put a stone. \nIf you want quit the game, enter the \'Q\' : '
 
 
 # Inform Messages
