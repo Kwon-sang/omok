@@ -1,6 +1,5 @@
 import os
 import itertools
-from typing import Tuple
 
 from modules.board import Board
 from modules import commands, settings
