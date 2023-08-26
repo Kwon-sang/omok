@@ -20,6 +20,7 @@ def run():
         board.show()
         # Player put the stone. If that place is invalid, repeat util valid
         print(f'Player : {players.get(player_id)}')
+        place = ''
         while True:
             try:
                 place = commands.place()
@@ -30,11 +31,11 @@ def run():
                 print(settings.MSG_QUIT)
                 return
             if board.is_valid_place(place):
-                board.set_place(place)
                 break
             else:
                 print(settings.ERROR_PLACE)
                 continue
+        board.set_place(place)
         board.put(player_id)
         board.show()
     os.system(command='cls')
