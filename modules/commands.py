@@ -12,21 +12,17 @@ def player_name() -> Dict[int, str]:
     return namespace
 
 
-def place() -> Tuple[bool, Tuple[int, int]]:
+def place() -> Tuple[int, int]:
     """
     Receive user's stone position input which has format 'Num1 Num2'.
-     If it has right formatted, return (int, int) tuple, else empty tuple.
-     and other return is Game-quit-flag to quit the game with player.
-    :return:  game-quit flag(bool), Stone place indices(tuple).
+
+    :raise: Exception - when input value is 'Q'
+            ValueError - when input value is invalid format
     """
     value = input(settings.CMD_PLACE)
-    quit_flag = False
     if value == settings.QUIT_KEY:
-        quit_flag = True
-    if re.match(r'^\d+\s\d+$', value):
-        i, j = value.split()
-        value = (int(i), int(j))
-    else:
-        value = ()
-
-    return quit_flag, value
+        return settings.QUIT_KEY
+    if not re.match(r'^\d+\s\d+$', value):
+        raise ValueError()
+    i, j = map(int, value.split())
+    return i, j

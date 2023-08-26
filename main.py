@@ -1,5 +1,7 @@
 import os
 import itertools
+from typing import Tuple
+
 from modules.board import Board
 from modules import commands, settings
 
@@ -19,18 +21,20 @@ def run():
         # Player put the stone. If that place is invalid, repeat util valid
         print(f'Player : {players.get(player_id)}')
         while True:
-            quit_flag, place = commands.place()
-            if quit_flag:
+            try:
+                place = commands.place()
+            except ValueError:
+                print(settings.ERROR_PLACE)
+                continue
+            if place == settings.QUIT_KEY:
                 print(settings.MSG_QUIT)
                 return
-            if not place:
+            if board.is_valid_place(place):
+                board.set_place(place)
+                break
+            else:
                 print(settings.ERROR_PLACE)
                 continue
-            if not board.is_valid_place(place):
-                print(settings.ERROR_PLACE)
-                continue
-            board.set_place(place)
-            break
         board.put(player_id)
         board.show()
     os.system(command='cls')
