@@ -25,29 +25,17 @@
 
 <br><br>
 
-## 2. 구조 설계
- - 사용자 입력 메시지, 에러메시지 등 문자열은 하드코딩이 아닌, `settings.py`에서 변수로 관리.
- - 바둑판의 생성, 돌 위치 삽입, 바둑판 상태 출력 등의 바둑판 전반에 대한 로직은 `board.py`의 `Board` 클래스로 관리.
- - `main.py`에서 `run()` 메소드에서 게임 실행 로직을 구성
+## 2. 모듈
 
-<br><br>
+[`main.py`] (https://github.com/Kwon-sang/omok/blob/master/main.py)
+  : 게임 실행 흐름을 제어
+  
+-- [`settings.py`] (https://github.com/Kwon-sang/omok/blob/master/modules/settings.py)
+  : 바둑판 기호, 입출력, 에러메시지 등 텍스트 변수 관리
 
-## 3. 모듈 구조
-
-* `main.py` : `run()`메서드에서 게임 실행 로직을 구성
-* modules
-    * `settings.py` : 바둑판 마킹, 입력 메시지, 오류 메시지 등 *텍스트 변수* 를 관리.
-    * `boards.py` : `Board` 클래스를 통해 바둑판, 포석 위치값, 바둑판 생성 및 출력 등 바둑판과 관련한 로직을 응집.
-
-<br><br>
-
-## 4. 고민한 사항들
-- 각 입출력 메시지와 에러 메시지등 텍스트 변수를 하드코딩 해야 할까?
-- 낮은 의존성과 높은 응집도를 어떻게 달성할 것인가?
-- 사용자 입력에 대한 입력값 검증 로직을 어디에 두어야 할까?
-- 잘못된 입력이 주어질 경우, while문을 통해 재입력을 실행할 것인가, 예외를 발생시킬 것인가?
-- 게임실행의 로직을 어떻게 간소화 하며 이해하기 쉽도록 할까?
-- 
-
-
+-- [`views.py`] (https://github.com/Kwon-sang/omok/blob/master/modules/views.py)
+  : 게임 화면을 위한 로직
+  
+-- [`board.py`] (https://github.com/Kwon-sang/omok/blob/master/modules/board.py)
+  : 오목을 위한 바둑판 정보와 사용자 변수 등 오목에 대한 핵심로직
 
