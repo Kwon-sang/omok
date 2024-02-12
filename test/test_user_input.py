@@ -1,13 +1,13 @@
 import unittest
 from unittest.mock import patch
 
-from src.user_input import UserInput
+from src import user_input
 
 
 class UserInputTest(unittest.TestCase):
 
     @patch('builtins.input')
-    def test_board_size_input_pass(self, mock_get):
+    def test_board_size_pass(self, mock_get):
         data_list = [
             '0',
             '3',
@@ -16,11 +16,11 @@ class UserInputTest(unittest.TestCase):
         ]
         mock_get.side_effect = data_list
         for data in data_list:
-            result = UserInput.board_size()
+            result = user_input.board_size()
             self.assertEqual(result, int(data))
 
     @patch('builtins.input')
-    def test_board_size_input_fail(self, mock_get):
+    def test_board_size_fail(self, mock_get):
         data_list = [
             '-1',
             'a',
@@ -34,14 +34,14 @@ class UserInputTest(unittest.TestCase):
         mock_get.side_effect = data_list
         for data in data_list:
             with self.assertRaises(ValueError) as context:
-                UserInput.board_size()
+                user_input.board_size()
             self.assertTrue(str(context.exception) == "Invalid input")
 
     @patch('builtins.input')
     def test_username_pass(self, mock_get):
         data = ('username1', 'username2')
         mock_get.side_effect = data
-        result = UserInput.username()
+        result = user_input.username()
         self.assertEqual(result, data)
 
     @patch('builtins.input')
@@ -49,7 +49,7 @@ class UserInputTest(unittest.TestCase):
         data = ('same username', 'same username')
         mock_get.side_effect = data
         with self.assertRaises(ValueError) as context:
-            UserInput.username()
+            user_input.username()
         self.assertTrue(str(context.exception) == "Invalid input")
 
     @patch('builtins.input')
@@ -63,7 +63,7 @@ class UserInputTest(unittest.TestCase):
         ]
         mock_get.side_effect = data_list
         for data in data_list:
-            result = UserInput.position()
+            result = user_input.position()
             expected = tuple(map(int, data.split()))
             self.assertEqual(result, expected)
 
@@ -80,11 +80,11 @@ class UserInputTest(unittest.TestCase):
         mock_get.side_effect = data_list
         for data in data_list:
             with self.assertRaises(ValueError):
-                UserInput.position()
+                user_input.position()
 
     @patch('builtins.input')
     def test_position_exit(self, mock_get):
         data = 'Q'
         mock_get.side_effect = data
         with self.assertRaises(SystemExit):
-            UserInput.position()
+            user_input.position()
