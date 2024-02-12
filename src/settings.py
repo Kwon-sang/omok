@@ -1,0 +1,4 @@
+MARK_EMPTY = '·'
+MARK_USER1 = '●'
+MARK_USER2 = '○'
+QUIT_KEY = 'Q'

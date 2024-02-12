@@ -8,12 +8,12 @@ def board_size() -> int:
     return int(size_input)
 
 
-def username() -> tuple[str, str]:
+def username() -> dict:
     user1 = input("사용자1 이름 : ")
     user2 = input("사용자1 이름 : ")
     if user1 == user2:
         raise ValueError("Invalid input")
-    return user1, user2
+    return {"user1": user1, "user2": user2}
 
 
 def position() -> tuple[int, int]:
