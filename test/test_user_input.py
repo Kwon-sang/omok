@@ -16,7 +16,7 @@ class UserInputTest(unittest.TestCase):
         ]
         mock_get.side_effect = data_list
         for data in data_list:
-            result = user_input.board_size()
+            result = user_input.size()
             self.assertEqual(result, int(data))
 
     @patch('builtins.input')
@@ -34,7 +34,7 @@ class UserInputTest(unittest.TestCase):
         mock_get.side_effect = data_list
         for data in data_list:
             with self.assertRaises(ValueError) as context:
-                user_input.board_size()
+                user_input.size()
             self.assertTrue(str(context.exception) == "Invalid input")
 
     @patch('builtins.input')

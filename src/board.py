@@ -1,17 +1,20 @@
 import settings
 
+from decorators import repeatable
+
 
 class Board:
 
     latest_position = None
 
-    def __init__(self, board_size: int, users: dict):
-        self.size: int = board_size
+    def __init__(self, size: int, users: dict):
+        self.size: int = size
         self.users: dict = users
-        self.board = [[settings.MARK_EMPTY] * board_size for _ in range(board_size)]
+        self.board = [[settings.MARK_EMPTY] * size for _ in range(size)]
 
+    @repeatable
     def set_position(self, user: str, position: tuple) -> None:
-        self._is_valid(position)
+        self._is_valid_position(position)
         self.latest_position = position
         x, y = position
         if self.users.get("user1") == user:
@@ -20,7 +23,7 @@ class Board:
             self.board[y][x] = settings.MARK_USER2
 
     def __str__(self):
-        index_board = [['0'] * (self.size + 1) for _ in range(self.board+1)]
+        index_board = [['0'] * (self.size + 1) for _ in range(self.size + 1)]
         index_board[0][0] = '.'
 
         for i in range(self.size):
@@ -32,7 +35,7 @@ class Board:
         for i in index_board:
             print(' '.join(i))
 
-    def _is_valid(self, position: tuple):
+    def _is_valid_position(self, position: tuple):
         x, y = position
         if self.board[y][x] != settings.MARK_EMPTY:
             raise ValueError
