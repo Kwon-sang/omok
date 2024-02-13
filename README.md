@@ -82,24 +82,75 @@
 - 메인
   - 게임 로직 흐름 제어(Logic controller)
 
+<br/>
+
 ## 4. 기능 구현
  
-### `user_input.py`
+#### `user_input.py` [Code](https://github.com/Kwon-sang/omok/blob/master/src/user_input.py)
 - `size() -> int` : 바둑판 사이즈 입력 및 입력 포맷 검증.
 - `username() - dict`: 사용자의 이름을 입력. 사용자1과 사용자2의 이름이 같을 경우 예외 발생. 유저1과 유저2의 상태 정보를 담은 딕셔너리를 반환.
 - `position() -> tuple[int, int]`: 사용자의 바둑돌 놓을 위치를 입력 및 포맷 검증. x, y 위치에 대한 정수 튜플을 반환
 - `re_game() -> bool` : 게임 종료 시, 재시작 여부(Y/N)에 대한 입력 및 포맷 검증. 불리언을 반환.
 - 재입력 요구 기능은 `decorators.py` 의 `@repeatable` 데코레이터를 통해 가능하도록 구현.
 
-### `board.py`
+#### `board.py` [Code](https://github.com/Kwon-sang/omok/blob/master/src/board.py)
 - `Board` : 바둑판과 관련된 메서드 및 속성의 집합. 바둑판의 위치 값 세팅, 입력값 검증, 오목 판별 메서드 존재.
 
-### `decorators.py`
+#### `decorators.py` [Code](https://github.com/Kwon-sang/omok/blob/master/src/decorators.py)
 - 사용자의 입력 오류에 대한 재입력 반복을 Decorator 문법을 이용하여 구현.
 - `@repeatable` 데코레이터 적용 시, 함수에서 `ValueError` 발생 시 재 실행 가능. 사용자의 입력오류에 대한 재입력을 해당 데코레이터를 사용하여 재입력기능을 구현.
 
-### `settings.py`
+#### `settings.py`[Code](https://github.com/Kwon-sang/omok/blob/master/src/settings.py)
 - 문자열 기반(입력 문자열, 출력 문자열, 에러 메시지 등) 값 정보를 관리.
 
-### `main.py`
+#### `main.py`[Code](https://github.com/Kwon-sang/omok/blob/master/src/main.py)
 - 게임 실행 흐름 로직
+
+<br />
+
+## 5. 게임 화면(Click to title)
+
+<details>
+    <summary>바둑판 크기 입력</summary>
+    <img width="866" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/8a765ef8-f33b-48f3-a54b-481cda756493">
+</details>
+
+<details>
+    <summary>바둑판 크기 입력 오류 </summary>
+    <img width="864" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/5178e940-a17a-4a7c-991d-4a96d167d106">
+</details>
+
+<details>
+    <summary>사용자 이름 입력 </summary>
+    <img width="863" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/b05a6d6e-c5fc-4253-ae72-92ffb86a9cb6">
+</details>
+
+<details>
+    <summary>사용자 이름 입력 중복 오류 시 </summary>
+    <img width="866" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/def4056e-f7da-4f61-b9ce-1749116fdb3d">
+</details>
+
+<details>
+    <summary>사용자 이름 입력 중복 오류 시 </summary>
+    <img width="866" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/def4056e-f7da-4f61-b9ce-1749116fdb3d">
+</details>
+
+<details>
+    <summary>오목 게임 화면 및 바둑돌 위치 입력 </summary>
+    <img width="860" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/024fc52d-e7a4-42a6-bf53-377c77cb2d65">
+</details>
+
+<details>
+    <summary>오목 게임 화면 및 바둑돌 위치 입력 오류  </summary>
+    <img width="863" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/ff500f32-a640-4a17-9eb2-d48d5c15cd30">
+</details>
+
+<details>
+    <summary>오목 게임 화면 및 이미 존재하는 위치 입력시 오류  </summary>
+    <img width="863" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/06fc0f3b-7880-4b35-91f1-6bb5d783588e">
+</details>
+
+<details>
+    <summary>오목 완성  </summary>
+    <img width="866" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/d5638ad5-b58d-4a25-b2f5-57b286e461b3">
+</details>
