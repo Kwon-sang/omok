@@ -131,11 +131,6 @@
 </details>
 
 <details>
-    <summary>사용자 이름 입력 중복 오류 시 </summary>
-    <img width="866" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/def4056e-f7da-4f61-b9ce-1749116fdb3d">
-</details>
-
-<details>
     <summary>오목 게임 화면 및 바둑돌 위치 입력 </summary>
     <img width="860" alt="image" src="https://github.com/Kwon-sang/omok/assets/115248448/024fc52d-e7a4-42a6-bf53-377c77cb2d65">
 </details>
