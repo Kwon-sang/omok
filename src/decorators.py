@@ -7,7 +7,8 @@ def repeatable(func):
         while True:
             try:
                 result = func(*args, **kwargs)
-            except ValueError:
+            except ValueError as e:
+                print(e)
                 continue
             else:
                 return result

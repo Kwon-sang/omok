@@ -7,17 +7,22 @@ class Board:
 
     latest_position = None
 
-    def __init__(self, size: int, users: dict):
-        self.size: int = size
-        self.users: dict = users
-        self.board = [[settings.MARK_EMPTY] * size for _ in range(size)]
+    def __init__(self, input_size, input_users):
+        if not callable(input_size) or not callable(input_users):
+            raise TypeError
+        self.size: int = input_size()
+        self.users: dict = input_users()
+        self.board = [[settings.MARK_EMPTY] * self.size for _ in range(self.size)]
 
     @repeatable
-    def set_position(self, user: str, position: tuple) -> None:
+    def set_position(self, user: str, input_position) -> None:
+        if not callable(input_position):
+            raise TypeError
+        position = input_position()
         self._is_valid_position(position)
         self.latest_position = position
         x, y = position
-        if self.users.get("user1") == user:
+        if user in self.users.get("user1"):
             self.board[y][x] = settings.MARK_USER1
         else:
             self.board[y][x] = settings.MARK_USER2
@@ -32,13 +37,19 @@ class Board:
         for i in range(self.size):
             for j in range(self.size):
                 index_board[i+1][j+1] = f'{self.board[i][j]:2s}'
+
+        result = ''
         for i in index_board:
-            print(' '.join(i))
+            result += ' '.join(i)
+            result += '\n'
+        return result
 
     def _is_valid_position(self, position: tuple):
         x, y = position
+        if x >= self.size or y >= self.size:
+            raise ValueError(settings.ERROR_INVALID_RANGE)
         if self.board[y][x] != settings.MARK_EMPTY:
-            raise ValueError
+            raise ValueError(settings.ERROR_INVALID_POSITION)
 
     def is_omok(self) -> bool:
         x, y = self.latest_position
