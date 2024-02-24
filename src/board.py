@@ -1,13 +1,19 @@
 import settings
+from typing import Callable
 
 from decorators import repeatable
 
 
 class Board:
+    """Has responsibility with states of Omok-board
 
-    latest_position = None
+    Through this class, You can print current board state, validate Omok completion and put Omok-stone on the board.
+    To initialize this class, need callable object arguments if not return TypeError.
+    """
 
-    def __init__(self, input_size, input_users):
+    latest_position = None  # register of users latest Omok-stone place position.
+
+    def __init__(self, input_size: Callable, input_users: Callable):
         if not callable(input_size) or not callable(input_users):
             raise TypeError
         self.size: int = input_size()
@@ -15,7 +21,7 @@ class Board:
         self.board = [[settings.MARK_EMPTY] * self.size for _ in range(self.size)]
 
     @repeatable
-    def set_position(self, user: str, input_position) -> None:
+    def set_position(self, user: str, input_position):
         if not callable(input_position):
             raise TypeError
         position = input_position()

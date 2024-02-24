@@ -2,6 +2,7 @@ from functools import wraps
 
 
 def repeatable(func):
+    """If decorated function raise Error, make resume the decorated function again."""
     @wraps(func)
     def wrapper(*args, **kwargs):
         while True:
