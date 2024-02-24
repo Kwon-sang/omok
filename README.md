@@ -6,13 +6,18 @@
 당시에 나름 열심히 프로그램을 작성하였으나, 지금 생각해보면 참 많이 부족했다는 생각이 든다.
 
 각 기능에 대한 모듈화를 고려하지 않았으며, 절차적 방식으로 구현하였다. 
+소위 프로그래밍 언어를 처음 배운 이들이 처음 프로그램을 작성할 때 하곤 하는 하나의 God-class를 통해 구현했었다.
 하나의 파이썬 스크립트에 모든 로직이 존재하였으며, 프로그램 제어를 위해 for문, while문, if문이 뒤섞여 있었으며,
 이러한 제어문의 깊이 또한 깊었다.
 
-'잘 짜여진 프로그램' 보다는 '돌아가는 프로그램'이 목적이었기에 코드의 수준은 엉망이었다고 회고한다. 
+'잘 짜여진 프로그램' 보다는 '돌아가는 프로그램'이 목적이었기에, 지금 처음 작성했던 코드를 회고해 보면 코드의 수준은 엉망이었다. 
 다른 누군가가 그 때의 코드를 본 다면, 쉽게 이해하기 힘들었을 것이다.
 
 시간이 지나, 공부를 하며 그 당시보다 더 나은 코드를 작성할 수 있을 것이란 생각이 들었다.
+객체와 객체 지향에 대해 많은 고민을 보는 시간이 있었으며, 파이썬의 다양한 기능과 코딩 스타일에 대해 배우게 되었다.
+프로그램을 만드는 '나'의 관점만이 아닌, 코드를 보는 '타인'의 관점 또한 고려할 수 있게 되었다.
+typing 모듈을 통한 파라미터 type hint와, docstring의 중요성 까지 말이다.
+
 따라서, 다시 한번 해당 프로젝트를 해보기로 하였다.
 
 '그저 잘 돌아가기만 하는' 프로그램이 아닌, 기록으로 남길 가치가 있도록 아주 세심하고 정교하게 주의를 기울여 해당 프로젝트를 진행하고자 한다.
@@ -86,24 +91,24 @@
 
 ## 4. 기능 구현
  
-#### `user_input.py` [Code](https://github.com/Kwon-sang/omok/blob/master/src/user_input.py)
+#### `user_input.py` [click to Code Page](https://github.com/Kwon-sang/omok/blob/master/src/user_input.py)
 - `size() -> int` : 바둑판 사이즈 입력 및 입력 포맷 검증.
 - `username() - dict`: 사용자의 이름을 입력. 사용자1과 사용자2의 이름이 같을 경우 예외 발생. 유저1과 유저2의 상태 정보를 담은 딕셔너리를 반환.
 - `position() -> tuple[int, int]`: 사용자의 바둑돌 놓을 위치를 입력 및 포맷 검증. x, y 위치에 대한 정수 튜플을 반환
 - `re_game() -> bool` : 게임 종료 시, 재시작 여부(Y/N)에 대한 입력 및 포맷 검증. 불리언을 반환.
 - 재입력 요구 기능은 `decorators.py` 의 `@repeatable` 데코레이터를 통해 가능하도록 구현.
 
-#### `board.py` [Code](https://github.com/Kwon-sang/omok/blob/master/src/board.py)
+#### `board.py` [click to Code Page](https://github.com/Kwon-sang/omok/blob/master/src/board.py)
 - `Board` : 바둑판과 관련된 메서드 및 속성의 집합. 바둑판의 위치 값 세팅, 입력값 검증, 오목 판별 메서드 존재.
 
-#### `decorators.py` [Code](https://github.com/Kwon-sang/omok/blob/master/src/decorators.py)
+#### `decorators.py` [click to Code Page](https://github.com/Kwon-sang/omok/blob/master/src/decorators.py)
 - 사용자의 입력 오류에 대한 재입력 반복을 Decorator 문법을 이용하여 구현.
 - `@repeatable` 데코레이터 적용 시, 함수에서 `ValueError` 발생 시 재 실행 가능. 사용자의 입력오류에 대한 재입력을 해당 데코레이터를 사용하여 재입력기능을 구현.
 
-#### `settings.py`[Code](https://github.com/Kwon-sang/omok/blob/master/src/settings.py)
+#### `settings.py`[click to Code Page](https://github.com/Kwon-sang/omok/blob/master/src/settings.py)
 - 문자열 기반(입력 문자열, 출력 문자열, 에러 메시지 등) 값 정보를 관리.
 
-#### `main.py`[Code](https://github.com/Kwon-sang/omok/blob/master/src/main.py)
+#### `main.py`[click to Code Page](https://github.com/Kwon-sang/omok/blob/master/src/main.py)
 - 게임 실행 흐름 로직
 
 <br />
